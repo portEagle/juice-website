@@ -9,7 +9,7 @@
   <!-- Calming, soft font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -28,7 +28,7 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: 'Manrope', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: 'Soria', 'Sora', ui-serif, Georgia, 'Times New Roman', serif;
       color: var(--ink);
       background: linear-gradient(180deg, var(--bg) 0%, #FDFDFC 70%);
       line-height: 1.65;
@@ -67,7 +67,7 @@
     .hero { padding: 72px 0 40px; }
     .hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
     .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 13px; }
-    h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.1; margin: 10px 0 16px; }
+    h1 { font-size: clamp(34px, 8vw, 64px); line-height: 1.1; margin: 10px 0 16px; }
     .lead { font-size: clamp(16px, 2.6vw, 20px); color: var(--muted); }
     .hero-card {
       background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow);
@@ -119,9 +119,21 @@
     .img-card { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px; }
     figure { margin: 0; }
     figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+      /* Background image that fades on scroll */
+    .bg-wrap{position:fixed;inset:0;z-index:-2;}
+    .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .2s ease-out;}
+    .bg-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.85) 0%, rgba(255,255,255,.9) 40%, rgba(250,250,249,.95) 70%, rgba(250,250,249,1) 100%);} 
+
+    /* Tweak headings for the serif look */
+    h1{ font-weight:700; letter-spacing:.2px; }
   </style>
 </head>
 <body>
+  <!-- Background image -->
+  <div class="bg-wrap" aria-hidden="true">
+    <img class="bg-img" src="https://picsum.photos/seed/island-bright/2000/1400" alt="Subtle tropical abstract background" loading="eager" decoding="async"/>
+  </div>
+  <div class="bg-overlay" aria-hidden="true"></div>
   <!-- Header -->
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
@@ -138,7 +150,7 @@
     <div class="wrap hero-inner">
       <div>
         <span class="eyebrow">Caribbean‑Inspired • Cold‑Pressed</span>
-        <h1>Bright flavors. Honest ingredients. Made with love.</h1>
+        <h1>Island‑bright, cold‑pressed lifts for the 2:57 p.m. slump</h1>
         <p class="lead">Small-batch juices and simple, functional treats for happier afternoons at work. No artificial stuff. No 30‑ingredient labels. Just real fruit, spices, and a recipe card Grandma would recognize.</p>
       </div>
       <div class="hero-card" aria-label="Popular flavors">
@@ -305,6 +317,22 @@
   <script>
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  <script>
+    // Fade background image as user scrolls
+    (function(){
+      const img = document.querySelector('.bg-img');
+      if(!img) return;
+      const minOpacity = 0.18; // keep a hint of the image
+      const fadeDistance = 600; // px to reach min opacity
+      function onScroll(){
+        const y = window.scrollY || window.pageYOffset || 0;
+        const ratio = Math.max(minOpacity, 1 - (y / fadeDistance));
+        img.style.opacity = ratio.toFixed(3);
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
   </script>
 </body>
 </html>
