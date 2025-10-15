@@ -3,346 +3,308 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#10b981" />
-  <title>Tasty Treats & Juices | Caribbean‑Inspired, Cold‑Pressed</title>
-  <meta name="description" content="Caribbean‑inspired, cold‑pressed juices and simple, functional treats for corporate micro‑kitchens. Fridge‑ready. Set‑and‑forget delivery. Compostable packaging." />
+  <title>Tasty Treats & Juices | Caribbean-Inspired Cold-Pressed Juices for Offices</title>
+  <meta name="description" content="Small-batch, cold-pressed juices with real fruit and spices. No artificial anything. Turnkey micro-kitchen and event service for happier, more energized teams." />
+
+  <!-- Calming, soft font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Calistoga&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root { --brand: #0ea5e9; --accent: #f59e0b; --leaf: #10b981; }
-    html { scroll-behavior: smooth; }
-    .font-display { font-family: 'Calistoga', system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; }
-    .font-sans { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; }
-    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.75); }
-    .grid-auto-fit { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    :root {
+      --bg: #FAFAF9; /* warm off-white */
+      --panel: #FFFFFF;
+      --ink: #1F2937; /* slate-800 */
+      --muted: #6B7280; /* gray-500 */
+      --line: #E5E7EB; /* gray-200 */
+      --accent: #10B981; /* emerald-500 */
+      --accent-weak: #D1FAE5; /* emerald-100 */
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--bg) 0%, #FDFDFC 70%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: rgba(250,250,249,0.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; gap: 12px; align-items: center; font-weight: 700; letter-spacing: 0.2px; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 12px;
+      background: radial-gradient(120% 120% at 10% 10%, var(--accent) 0%, #34D399 60%, #A7F3D0 100%);
+      box-shadow: 0 6px 12px rgba(16,185,129,0.25);
+    }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 16px; border-radius: 999px; border: 1px solid var(--accent);
+      background: #ffffff; color: var(--accent); font-weight: 600; transition: transform .05s ease, box-shadow .2s;
+    }
+    .contact-btn:hover { text-decoration: none; box-shadow: 0 8px 22px rgba(16,185,129,0.18); }
+    .contact-btn:active { transform: translateY(1px); }
+
+    /* Hero */
+    .hero { padding: 72px 0 40px; }
+    .hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 13px; }
+    h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.1; margin: 10px 0 16px; }
+    .lead { font-size: clamp(16px, 2.6vw, 20px); color: var(--muted); }
+    .hero-card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow);
+    }
+    .pill { display:inline-block; font-size: 12px; color: var(--ink); background: var(--accent-weak); border-radius: 999px; padding: 6px 10px; margin-right: 8px; }
+
+    /* Sections */
+    section { padding: 48px 0; }
+    h2 { font-size: clamp(22px, 4vw, 32px); margin: 0 0 12px; }
+    p { margin: 0 0 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .muted { color: var(--muted); }
+    .check { color: var(--accent); font-weight: 700; margin-right: 8px; }
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.clean li { padding-left: 0; margin: 8px 0; }
+
+    .faq { border-top: 1px solid var(--line); }
+    .faq-item { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .faq-item h4 { margin: 0 0 6px; font-size: 16px; }
+
+    /* CTA */
+    .cta { text-align: center; padding: 56px 0; }
+    .cta .panel { display: inline-block; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; box-shadow: var(--shadow); }
+    .cta a.btn {
+      display: inline-block; margin-top: 8px; padding: 12px 18px; border-radius: 999px;
+      background: var(--accent); color: white; font-weight: 700; letter-spacing: .2px;
+    }
+    .cta a.btn:hover { text-decoration: none; filter: saturate(1.05) brightness(0.98); }
+
+    /* Footer */
+    footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .nav { height: auto; padding: 12px 0; }
+      .hero { padding-top: 56px; }
+    }
+      /* Images */
+    .hero-img { width: 100%; height: clamp(220px, 36vw, 360px); object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .img-card { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px; }
+    figure { margin: 0; }
+    figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
   </style>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%2310b981'/%3E%3Cpath d='M66 168c24 18 100 18 124 0' stroke='%23fff' stroke-width='18' fill='none' stroke-linecap='round'/%3E%3Cpath d='M86 98c0 12 18 22 42 22s42-10 42-22-18-22-42-22-42 10-42 22Z' fill='%23f59e0b'/%3E%3C/svg%3E" />
 </head>
-<body class="font-sans text-slate-800">
+<body>
   <!-- Header -->
-  <header class="fixed inset-x-0 top-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="mt-4 mb-2 rounded-2xl glass shadow-lg ring-1 ring-black/5">
-        <div class="flex items-center justify-between px-4 py-3">
-          <a href="#top" class="flex items-center gap-3" aria-label="Tasty Treats & Juices home">
-            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-white font-bold">TT</span>
-            <div class="leading-tight">
-              <div class="font-display text-xl">Tasty Treats & Juices</div>
-              <div class="text-xs text-slate-600">Caribbean‑Inspired • Cold‑Pressed</div>
-            </div>
-          </a>
-          <button id="navBtn" class="lg:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 ring-1 ring-slate-300 text-slate-700" aria-label="Open menu">
-            <span class="text-sm font-medium">Menu</span>
-          </button>
-          <ul id="navLinks" class="hidden lg:flex items-center gap-6 text-sm font-medium">
-            <li><a class="hover:text-emerald-600" href="#story">Story</a></li>
-            <li><a class="hover:text-emerald-600" href="#menu">Flavors</a></li>
-            <li><a class="hover:text-emerald-600" href="#office">For Offices</a></li>
-            <li><a class="hover:text-emerald-600" href="#how">How It Works</a></li>
-            <li><a class="hover:text-emerald-600" href="#contact">Contact</a></li>
-            <li><a class="inline-flex items-center rounded-xl bg-emerald-600 px-3 py-2 text-white hover:bg-emerald-500" href="#contact">Get a Quote</a></li>
-          </ul>
-        </div>
-        <div id="mobileMenu" class="hidden border-t border-slate-200 px-4 pb-4 lg:hidden">
-          <a class="block py-2" href="#story">Story</a>
-          <a class="block py-2" href="#menu">Flavors</a>
-          <a class="block py-2" href="#office">For Offices</a>
-          <a class="block py-2" href="#how">How It Works</a>
-          <a class="block py-2" href="#contact">Contact</a>
-          <a class="mt-2 inline-flex items-center rounded-xl bg-emerald-600 px-3 py-2 text-white hover:bg-emerald-500" href="#contact">Get a Quote</a>
-        </div>
-      </nav>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Tasty Treats &amp; Juices</span>
+      </div>
+      <a class="contact-btn" href="#contact" aria-label="Jump to contact section">Contact</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="top" class="relative isolate overflow-hidden pt-40 lg:pt-44">
-    <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1920&auto=format&fit=crop" alt="Colorful cold‑pressed juices and fresh fruits" class="absolute inset-0 -z-10 h-full w-full object-cover" />
-    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-white via-white/70 to-white/10"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div>
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-slate-900">
-            Island‑bright, cold‑pressed lifts for the <span class="text-emerald-700">2:57 p.m.</span> slump
-          </h1>
-          <p class="mt-5 max-w-xl text-lg text-slate-700">
-            Caribbean‑inspired juices and simple, functional treats—crafted with real fruit and spices, no 30‑ingredient labels. Fridge‑ready for <span class="font-semibold">corporate micro‑kitchens</span>.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#menu" class="rounded-xl bg-emerald-600 px-5 py-3 text-white font-semibold hover:bg-emerald-500">Explore Flavors</a>
-            <a href="#contact" class="rounded-xl ring-1 ring-slate-300 px-5 py-3 font-semibold hover:bg-white">Get a Quote</a>
-          </div>
-          <div class="mt-6 flex items-center gap-4 text-sm text-slate-600">
-            <div class="inline-flex items-center gap-2"><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Compostable packs</div>
-            <div class="inline-flex items-center gap-2"><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> QR reorders</div>
-            <div class="inline-flex items-center gap-2"><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Set‑and‑forget delivery</div>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="grid grid-auto-fit gap-4">
-            <figure class="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/5">
-              <img src="https://images.unsplash.com/photo-1542442470-9f4f2e7e3ed9?q=80&w=1200&auto=format&fit=crop" alt="Hibiscus‑Ginger juice with fresh hibiscus and ginger root" class="h-64 w-full object-cover" />
-              <figcaption class="px-4 py-3 text-sm">Hibiscus‑Ginger • bright & zesty</figcaption>
-            </figure>
-            <figure class="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/5">
-              <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=1200&auto=format&fit=crop" alt="Mango‑Turmeric juice with fresh mango and turmeric" class="h-64 w-full object-cover" />
-              <figcaption class="px-4 py-3 text-sm">Mango‑Turmeric • sunny & smooth</figcaption>
-            </figure>
-            <figure class="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/5">
-              <img src="https://images.unsplash.com/photo-1613478223715-9b7d469fa7a8?q=80&w=1200&auto=format&fit=crop" alt="Sorrel‑Lime juice with lime wedges and sorrel petals" class="h-64 w-full object-cover" />
-              <figcaption class="px-4 py-3 text-sm">Sorrel‑Lime • crisp & refreshing</figcaption>
-            </figure>
-          </div>
-        </div>
+  <section class="hero" id="home">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Caribbean‑Inspired • Cold‑Pressed</span>
+        <h1>Bright flavors. Honest ingredients. Made with love.</h1>
+        <p class="lead">Small-batch juices and simple, functional treats for happier afternoons at work. No artificial stuff. No 30‑ingredient labels. Just real fruit, spices, and a recipe card Grandma would recognize.</p>
+      </div>
+      <div class="hero-card" aria-label="Popular flavors">
+        <img class="hero-img" src="https://picsum.photos/seed/tasty-juices/1200/800" alt="Assorted cold-pressed juice bottles on a light background" loading="eager" decoding="async" />
+        <div class="pill">Mango‑Turmeric</div>
+        <div class="pill">Sorrel‑Lime</div>
+        <div class="pill">Orange‑Apple‑Turmeric‑Ginger</div>
+        <p class="muted" style="margin-top:10px;">We rotate seasonal trios to keep fridges fresh and teams excited.</p>
       </div>
     </div>
-    <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0 64L60 50.7C120 37 240 11 360 10.7C480 11 600 37 720 42.7C840 48 960 32 1080 26.7C1200 21 1320 27 1380 29.3L1440 32V80H0V64Z" fill="#fff"/></svg>
   </section>
 
-  <!-- Story -->
-  <section id="story" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid items-center gap-10 lg:grid-cols-2">
-        <div>
-          <h2 class="font-display text-3xl sm:text-4xl text-slate-900">From the family kitchen to your office fridge</h2>
-          <p class="mt-4 text-slate-700 leading-relaxed">
-            “A good drink can lift a whole room.” Charmaine’s grandmother taught her that—bright, honest, made with love. Today, Tasty Treats & Juices brings the same spirit to work life, where too many “healthy” options leave us sluggish or bored. At <span class="font-semibold">2:57 p.m.</span>, when most offices run on fumes, we bring the lift.
-          </p>
-          <ul class="mt-6 grid gap-3 text-slate-700">
-            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500"></span> Real fruit & Caribbean spices</li>
-            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500"></span> No artificial stuff, no mystery labels</li>
-            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500"></span> Recipes a grandmother would recognize</li>
+  <!-- Founder Story & Why Us -->
+  <section id="story">
+    <div class="wrap grid-2">
+      <div>
+        <h2>Our Story</h2>
+        <p>I’m Charmaine, founder of Tasty Treats &amp; Juices. This started in my family kitchen, where my grandmother taught me that a good drink can lift a whole room—bright, honest, and made with love.</p>
+        <p>Fast-forward to office life at 2:57 p.m., when most teams run on fumes. People want something that tastes amazing, feels clean, and actually helps them finish strong.</p>
+        <p>We bring that lift—Caribbean-inspired, cold-pressed juices and simple, functional treats. Think Mango‑Turmeric that’s sunny and smooth, Sorrel‑Lime that cuts through the afternoon fog.</p>
+      </div>
+      <div>
+        <h2>Why Us</h2>
+        <div class="card">
+          <ul class="clean">
+            <li><span class="check">✓</span><strong>Island‑bright flavor</strong> employees actually crave</li>
+            <li><span class="check">✓</span><strong>Transparent ingredients</strong> leadership can stand behind</li>
+            <li><span class="check">✓</span><strong>Turnkey office program</strong> that makes workplace snacks effortless</li>
           </ul>
         </div>
-        <div class="grid grid-auto-fit gap-4">
-          <img class="h-64 w-full rounded-2xl object-cover shadow-lg ring-1 ring-black/5" src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=1200&auto=format&fit=crop" alt="Fresh limes, ginger, and hibiscus on a cutting board"/>
-          <img class="h-64 w-full rounded-2xl object-cover shadow-lg ring-1 ring-black/5" src="https://images.unsplash.com/photo-1593281604246-5c72f8325c06?q=80&w=1200&auto=format&fit=crop" alt="Bottled cold‑pressed juices in a fridge"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu">
+    <div class="wrap">
+      <h2>Our Juices (Cold‑Pressed)</h2>
+      <div class="grid-3" role="list" aria-label="Juice menu">
+        <article class="card" role="listitem">
+          <img class="img-card" src="https://picsum.photos/seed/orange-ginger/600/400" alt="Orange, apple, turmeric and ginger ingredients beside a chilled juice" loading="lazy" decoding="async" />
+          <h3>Orange • Apple • Turmeric • Ginger</h3>
+          <p class="muted">A citrus‑spice refresher with a warm, golden finish.</p>
+          <p><em>Highlights:</em> Rich in vitamin C and antioxidants; turmeric (curcumin) and ginger (gingerols) are widely studied for anti‑inflammatory and digestive support. A clean, zesty pick‑me‑up for mid‑day slumps.</p>
+        </article>
+        <article class="card" role="listitem">
+          <img class="img-card" src="https://picsum.photos/seed/beet-carrot/600/400" alt="Beets, carrots, apple and ginger arranged with a glass of juice" loading="lazy" decoding="async" />
+          <h3>Beet • Carrot • Ginger (+ Apple)</h3>
+          <p class="muted">Earthy‑sweet and energizing with a gentle ginger kick.</p>
+          <p><em>Highlights:</em> Naturally provides beta‑carotene, vitamin C, and folate. Popular for supporting stamina and everyday vitality; ginger adds soothing digestive support.</p>
+        </article>
+        <article class="card" role="listitem">
+          <img class="img-card" src="https://picsum.photos/seed/pineapple-cucumber/600/400" alt="Pineapple, cucumber and ginger next to a refreshing juice" loading="lazy" decoding="async" />
+          <h3>Pineapple • Cucumber • Ginger</h3>
+          <p class="muted">Tropical and ultra‑refreshing.</p>
+          <p><em>Highlights:</em> Pineapple brings vitamin C and bromelain (a digestive enzyme); cucumber adds hydrating crispness; ginger supports digestion and helps settle the stomach.</p>
+        </article>
+      </div>
+      <p class="muted" style="margin-top:12px;">We never add refined sugar, artificial flavors, or preservatives—just fresh produce and spices.</p>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits">
+    <div class="wrap grid-2">
+      <div class="card">
+        <h2>Benefits at a Glance</h2>
+        <ul class="clean">
+          <li><span class="check">✓</span><strong>Clean energy, no crash</strong></li>
+          <li><span class="check">✓</span><strong>Hydration + digestion support</strong> from water‑rich produce and ginger</li>
+          <li><span class="check">✓</span><strong>Office‑friendly</strong> sealed, grab‑and‑go bottles</li>
+          <li><span class="check">✓</span><strong>Consistent quality</strong> thanks to small‑batch, cold‑pressed methods</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>For Workplaces</h2>
+        <p><strong>The 2:57 PM Problem, Solved.</strong> We stock micro‑kitchens, team fridges, and events with a rotating selection of our bestsellers.</p>
+        <ul class="clean">
+          <li><span class="check">✓</span><strong>Simple setup:</strong> We deliver labeled, ready‑to‑chill cases.</li>
+          <li><span class="check">✓</span><strong>Flexible cadence:</strong> Weekly or bi‑weekly restocks.</li>
+          <li><span class="check">✓</span><strong>Clear reporting:</strong> Ingredient lists and allergen notes in one sheet.</li>
+          <li><span class="check">✓</span><strong>Add‑ons:</strong> Pop‑up tastings and seasonal flavors.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section id="how">
+    <div class="wrap">
+      <h2>How It Works</h2>
+      <div class="grid-2">
+        <div class="card">
+          <ol style="margin:0; padding-left: 18px;">
+            <li>Tell us your headcount &amp; schedule.</li>
+            <li>Choose flavors (or let us rotate a seasonal trio).</li>
+            <li>Delivery + chill. We handle labels and replenishment.</li>
+            <li>Enjoy happier afternoons.</li>
+          </ol>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Menu / Flavors -->
-  <section id="menu" class="bg-slate-50 py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-        <h2 class="font-display text-3xl sm:text-4xl text-slate-900">Signature Flavors</h2>
-        <p class="text-slate-600">Cold‑pressed. 12oz bottles. 100% real ingredients.</p>
-      </div>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Hibiscus Ginger -->
-        <article class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-          <img class="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1200&auto=format&fit=crop" alt="Hibiscus petals and ginger"/>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold">Hibiscus‑Ginger</h3>
-            <p class="mt-1 text-slate-600">Hibiscus, ginger, apple, lime. Bright, zesty, afternoon‑reset.</p>
-            <dl class="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-xl bg-emerald-50 px-3 py-2"><dt class="font-medium text-emerald-800">Function</dt><dd class="text-emerald-700">Lift & focus</dd></div>
-              <div class="rounded-xl bg-orange-50 px-3 py-2"><dt class="font-medium text-orange-800">No</dt><dd class="text-orange-700">Added sugar</dd></div>
-            </dl>
-          </div>
-        </article>
-        <!-- Mango Turmeric -->
-        <article class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-          <img class="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" src="https://images.unsplash.com/photo-1615486364138-2f3f9d8c9c5a?q=80&w=1200&auto=format&fit=crop" alt="Mangoes and turmeric"/>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold">Mango‑Turmeric</h3>
-            <p class="mt-1 text-slate-600">Mango, turmeric, pineapple, coconut water. Sunny & smooth.</p>
-            <dl class="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-xl bg-emerald-50 px-3 py-2"><dt class="font-medium text-emerald-800">Function</dt><dd class="text-emerald-700">Feel‑good calm</dd></div>
-              <div class="rounded-xl bg-orange-50 px-3 py-2"><dt class="font-medium text-orange-800">No</dt><dd class="text-orange-700">Artificial colors</dd></div>
-            </dl>
-          </div>
-        </article>
-        <!-- Sorrel Lime -->
-        <article class="group rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-          <img class="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" src="https://images.unsplash.com/photo-1617038260897-43cf4820d61c?q=80&w=1200&auto=format&fit=crop" alt="Sorrel and lime"/>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold">Sorrel‑Lime</h3>
-            <p class="mt-1 text-slate-600">Sorrel, lime, cane juice. Crisp, clean, cuts through the fog.</p>
-            <dl class="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-xl bg-emerald-50 px-3 py-2"><dt class="font-medium text-emerald-800">Function</dt><dd class="text-emerald-700">Refresh & hydrate</dd></div>
-              <div class="rounded-xl bg-orange-50 px-3 py-2"><dt class="font-medium text-orange-800">No</dt><dd class="text-orange-700">Preservatives</dd></div>
-            </dl>
-          </div>
-        </article>
-      </div>
-      <p class="mt-6 text-sm text-slate-500">*Seasonal rotations available. Custom SKUs for events and wellness weeks.</p>
-    </div>
-  </section>
-
-  <!-- For Offices -->
-  <section id="office" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div>
-          <h2 class="font-display text-3xl sm:text-4xl text-slate-900">Built for corporate micro‑kitchens</h2>
-          <ul class="mt-6 space-y-4">
-            <li class="flex gap-4">
-              <div class="mt-1 h-8 w-8 flex-none rounded-xl bg-emerald-100 text-emerald-700 inline-flex items-center justify-center">1</div>
-              <div>
-                <div class="font-semibold">Fridge‑ready cases & clean planogram</div>
-                <p class="text-slate-600">Everything looks good, moves fast, and is easy to restock.</p>
-              </div>
-            </li>
-            <li class="flex gap-4">
-              <div class="mt-1 h-8 w-8 flex-none rounded-xl bg-emerald-100 text-emerald-700 inline-flex items-center justify-center">2</div>
-              <div>
-                <div class="font-semibold">Set‑and‑forget delivery</div>
-                <p class="text-slate-600">We ship on your cadence with simple usage‑based adjustments.</p>
-              </div>
-            </li>
-            <li class="flex gap-4">
-              <div class="mt-1 h-8 w-8 flex-none rounded-xl bg-emerald-100 text-emerald-700 inline-flex items-center justify-center">3</div>
-              <div>
-                <div class="font-semibold">Compostable / recyclable packaging + QR reorders</div>
-                <p class="text-slate-600">Because the only thing worse than a sugar crash is an empty fridge.</p>
-              </div>
-            </li>
+        <div class="card">
+          <h3 style="margin-top:0;">Ingredients &amp; Sourcing</h3>
+          <ul class="clean">
+            <li>Whole fruits and veggies, Caribbean‑inspired spices</li>
+            <li>Cold‑pressed, never from concentrate</li>
+            <li>No artificial colors, flavors, or preservatives</li>
           </ul>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#contact" class="rounded-xl bg-emerald-600 px-5 py-3 text-white font-semibold hover:bg-emerald-500">Request a tasting</a>
-            <a href="#how" class="rounded-xl ring-1 ring-slate-300 px-5 py-3 font-semibold hover:bg-white">See how it works</a>
-          </div>
-        </div>
-        <div class="grid grid-auto-fit gap-4">
-          <img class="h-64 w-full rounded-2xl object-cover shadow-lg ring-1 ring-black/5" src="https://images.unsplash.com/photo-1556909114-9899a01b4757?q=80&w=1200&auto=format&fit=crop" alt="Office micro‑kitchen fridge stocked neatly"/>
-          <div class="relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg ring-1 ring-black/5">
-            <div class="flex items-center gap-4">
-              <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center">
-                <!-- Simple QR SVG placeholder -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-10 w-10" aria-hidden="true"><path fill="#0ea5e9" d="M8 8h16v16H8zM40 8h16v16H40zM8 40h16v16H8z"/><path fill="#111827" d="M28 8h4v4h-4zM24 28h-4v-4h4zM40 24h-4v-4h4zM52 28h-4v-4h4zM28 52h4v4h-4zM40 44h4v4h-4zM52 52h-4v-4h4z"/></svg>
-              </div>
-              <div>
-                <div class="font-semibold">Scan to reorder</div>
-                <p class="text-sm text-slate-600">Place a sticker on your fridge. Staff scan for instant reorders.</p>
-              </div>
-            </div>
-            <a href="#contact" class="mt-4 inline-flex items-center text-emerald-700 font-medium">Get a QR pack →</a>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section id="how" class="bg-gradient-to-b from-emerald-50 to-white py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="font-display text-3xl sm:text-4xl text-slate-900">Simple, turnkey setup</h2>
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-          <div class="text-sm font-semibold text-emerald-700">Step 1</div>
-          <div class="mt-1 text-xl font-semibold">Pick your flavors</div>
-          <p class="mt-2 text-slate-600">We recommend a 3‑SKU starter set: Hibiscus‑Ginger, Mango‑Turmeric, Sorrel‑Lime.</p>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-          <div class="text-sm font-semibold text-emerald-700">Step 2</div>
-          <div class="mt-1 text-xl font-semibold">Choose cadence</div>
-          <p class="mt-2 text-slate-600">Weekly or bi‑weekly drops. We’ll right‑size cases based on usage.</p>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-          <div class="text-sm font-semibold text-emerald-700">Step 3</div>
-          <div class="mt-1 text-xl font-semibold">Scan to reorder</div>
-          <p class="mt-2 text-slate-600">We include fridge stickers with a QR for instant reorders.</p>
-        </div>
+  <!-- FAQs -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2>FAQs</h2>
+      <div class="faq-item">
+        <h4>Do you add sugar?</h4>
+        <p>No—only the natural sweetness of fruit.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How long do the juices last?</h4>
+        <p>Bottled cold; best within 3–5 days refrigerated.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can you support events?</h4>
+        <p>Yes! From lunch‑and‑learns to offsites, with tasting flights available.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Allergens?</h4>
+        <p>Our standard juices contain no dairy, nuts, or gluten. Always check the label.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Medical claims?</h4>
+        <p>While many ingredients are studied for health benefits, our juices are not intended to diagnose, treat, cure, or prevent any disease.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="py-10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="relative overflow-hidden rounded-3xl bg-emerald-600 px-6 py-10 text-white shadow-lg">
-        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10"></div>
-        <div class="absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-white/10"></div>
-        <div class="relative z-10 grid gap-6 lg:grid-cols-3 lg:items-center">
-          <div class="lg:col-span-2">
-            <h3 class="font-display text-3xl">Bring island‑bright energy to your office</h3>
-            <p class="mt-2 text-emerald-50">Transparent ingredients leadership can stand behind. Flavors employees actually crave.</p>
-          </div>
-          <div class="lg:text-right">
-            <a href="#contact" class="inline-flex items-center rounded-xl bg-white px-5 py-3 font-semibold text-emerald-700 hover:bg-emerald-50">Request a tasting →</a>
-          </div>
-        </div>
+  <!-- Contact / CTA -->
+  <section id="contact" class="cta" aria-label="Contact">
+    <div class="wrap">
+      <div class="panel">
+        <h2>Ready to brighten your team’s afternoons?</h2>
+        <p class="muted">We’ll tailor a simple, no‑distraction juice program for your office.</p>
+        <p>
+          <a class="btn" href="mailto:hello@tastytreatsandjuices.com">Email us</a>
+          &nbsp; or &nbsp;
+          <a href="tel:+15551234567">(555) 123‑4567</a>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-2">
-        <div>
-          <h2 class="font-display text-3xl sm:text-4xl text-slate-900">Get a Quote or Book a Tasting</h2>
-          <p class="mt-3 text-slate-600">Tell us about your headcount, micro‑kitchen layout, and preferred cadence. We’ll customize a planogram and starter order.</p>
-          <div class="mt-6 grid gap-3 text-sm">
-            <div class="inline-flex items-center gap-3"><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Email: <a class="font-medium text-emerald-700" href="mailto:hello@tastytreatsjuices.co">hello@tastytreatsjuices.co</a></div>
-            <div class="inline-flex items-center gap-3"><span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Phone: <a class="font-medium text-emerald-700" href="tel:+14045551212">(404) 555‑1212</a></div>
-          </div>
-        </div>
-        <form class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5" action="https://formsubmit.co" method="POST">
-          <!-- NOTE: Replace action with your form handler or Formspree/FormSubmit endpoint -->
-          <div class="grid gap-5 sm:grid-cols-2">
-            <div class="sm:col-span-2">
-              <label class="block text-sm font-medium text-slate-700">Company</label>
-              <input required name="company" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500" placeholder="Acme Inc." />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Name</label>
-              <input required name="name" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500" placeholder="Your name" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Email</label>
-              <input required type="email" name="email" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500" placeholder="you@company.com" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Headcount</label>
-              <input name="headcount" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500" placeholder="e.g., 150" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-700">Preferred cadence</label>
-              <select name="cadence" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500">
-                <option>Weekly</option>
-                <option>Bi‑weekly</option>
-                <option>Monthly</option>
-              </select>
-            </div>
-            <div class="sm:col-span-2">
-              <label class="block text-sm font-medium text-slate-700">Message</label>
-              <textarea name="message" rows="4" class="mt-1 w-full rounded-xl border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500" placeholder="Tell us about your micro‑kitchen and flavor preferences..."></textarea>
-            </div>
-            <div class="sm:col-span-2 flex items-center justify-between">
-              <div class="text-xs text-slate-500">By submitting, you agree to be contacted about your request.</div>
-              <button class="rounded-xl bg-emerald-600 px-5 py-3 text-white font-semibold hover:bg-emerald-500" type="submit">Send Request</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 py-10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <div class="font-display text-xl">Tasty Treats & Juices</div>
-          <div class="text-sm text-slate-600">© <span id="yr"></span> Tasty Treats & Juices. All rights reserved.</div>
-        </div>
-        <div class="text-sm text-slate-600">Made with real fruit, spices, and love. 🍍</div>
+  <footer>
+    <div class="wrap">
+      <div style="display:flex; gap:12px; align-items:center; justify-content: space-between; flex-wrap: wrap;">
+        <span>© <span id="year"></span> Tasty Treats &amp; Juices. All rights reserved.</span>
+        <span class="muted">Made with love. Served ice‑cold.</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const navBtn = document.getElementById('navBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    navBtn && navBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    // Year
-    document.getElementById('yr').textContent = new Date().getFullYear();
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
