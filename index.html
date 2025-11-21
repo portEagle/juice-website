@@ -78,6 +78,7 @@
     section { padding: 48px 0; }
     h2 { font-size: clamp(22px, 4vw, 32px); margin: 0 0 12px; }
     p { margin: 0 0 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
@@ -107,16 +108,17 @@
     /* Responsive */
     @media (max-width: 980px) {
       .hero-inner { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
       .grid-3 { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
-      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
       .nav { height: auto; padding: 12px 0; }
       .hero { padding-top: 56px; }
     }
       /* Images */
-    .hero-img { width: 100%; height: clamp(220px, 36vw, 360px); object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
-    .img-card { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px; }
+    .hero-img { height: clamp(220px, 36vw, 360px); object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .img-card { width: 100%; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px; }
     figure { margin: 0; }
     figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
       /* Background image that fades on scroll */
@@ -131,7 +133,7 @@
 <body>
   <!-- Background image -->
   <div class="bg-wrap" aria-hidden="true">
-    <img class="bg-img" src="https://picsum.photos/seed/island-bright/2000/1400" alt="Subtle tropical abstract background" loading="eager" decoding="async"/>
+    <img class="bg-img" src="./images/Juices-bottles.webp" alt="Subtle tropical abstract background" loading="eager" decoding="async"/>
   </div>
   <div class="bg-overlay" aria-hidden="true"></div>
   <!-- Header -->
@@ -154,10 +156,11 @@
         <p class="lead">Small-batch juices and simple, functional treats for happier afternoons at work. No artificial stuff. No 30‑ingredient labels. Just real fruit, spices, and a recipe card Grandma would recognize.</p>
       </div>
       <div class="hero-card" aria-label="Popular flavors">
-        <img class="hero-img" src="https://picsum.photos/seed/tasty-juices/1200/800" alt="Assorted cold-pressed juice bottles on a light background" loading="eager" decoding="async" />
-        <div class="pill">Mango‑Turmeric</div>
-        <div class="pill">Sorrel‑Lime</div>
-        <div class="pill">Orange‑Apple‑Turmeric‑Ginger</div>
+        <img class="hero-img" src="./images/Juices-bottles.webp" alt="Assorted cold-pressed juice bottles on a light background" loading="eager" decoding="async" />
+        <div class="pill">Pineapple-Cucumber-Ginger</div>
+        <div class="pill">Sorrel‑Ginger</div>
+        <div class="pill">Beets-Carrots-Ginger</div>
+        <div class="pill">Orange-Apple-Tumeric-Ginger</div>
         <p class="muted" style="margin-top:10px;">We rotate seasonal trios to keep fridges fresh and teams excited.</p>
       </div>
     </div>
@@ -189,21 +192,27 @@
   <section id="menu">
     <div class="wrap">
       <h2>Our Juices (Cold‑Pressed)</h2>
-      <div class="grid-3" role="list" aria-label="Juice menu">
+      <div class="grid-4" role="list" aria-label="Juice menu">
         <article class="card" role="listitem">
-          <img class="img-card" src="https://picsum.photos/seed/orange-ginger/600/400" alt="Orange, apple, turmeric and ginger ingredients beside a chilled juice" loading="lazy" decoding="async" />
+          <img class="img-card" src="./images/1.webp" alt="Orange, apple, turmeric and ginger ingredients beside a chilled juice" loading="lazy" decoding="async" />
+          <h3>Sorrel • Ginger</h3>
+          <p class="muted">A citrus‑spice refresher with a warm, golden finish.</p>
+          <p><em>Highlights:</em> Rich in vitamin C and antioxidants; turmeric (curcumin) and ginger (gingerols) are widely studied for anti‑inflammatory and digestive support. A clean, zesty pick‑me‑up for mid‑day slumps.</p>
+        </article>
+        <article class="card" role="listitem">
+          <img class="img-card" src="./images/2.webp" alt="Orange, apple, turmeric and ginger ingredients beside a chilled juice" loading="lazy" decoding="async" />
           <h3>Orange • Apple • Turmeric • Ginger</h3>
           <p class="muted">A citrus‑spice refresher with a warm, golden finish.</p>
           <p><em>Highlights:</em> Rich in vitamin C and antioxidants; turmeric (curcumin) and ginger (gingerols) are widely studied for anti‑inflammatory and digestive support. A clean, zesty pick‑me‑up for mid‑day slumps.</p>
         </article>
         <article class="card" role="listitem">
-          <img class="img-card" src="https://picsum.photos/seed/beet-carrot/600/400" alt="Beets, carrots, apple and ginger arranged with a glass of juice" loading="lazy" decoding="async" />
-          <h3>Beet • Carrot • Ginger (+ Apple)</h3>
+          <img class="img-card" src="./images/3.webp" alt="Beets, carrots, apple and ginger arranged with a glass of juice" loading="lazy" decoding="async" />
+          <h3>Beet • Carrot • Ginger</h3>
           <p class="muted">Earthy‑sweet and energizing with a gentle ginger kick.</p>
           <p><em>Highlights:</em> Naturally provides beta‑carotene, vitamin C, and folate. Popular for supporting stamina and everyday vitality; ginger adds soothing digestive support.</p>
         </article>
         <article class="card" role="listitem">
-          <img class="img-card" src="https://picsum.photos/seed/pineapple-cucumber/600/400" alt="Pineapple, cucumber and ginger next to a refreshing juice" loading="lazy" decoding="async" />
+          <img class="img-card" src="./images/4.webp" alt="Pineapple, cucumber and ginger next to a refreshing juice" loading="lazy" decoding="async" />
           <h3>Pineapple • Cucumber • Ginger</h3>
           <p class="muted">Tropical and ultra‑refreshing.</p>
           <p><em>Highlights:</em> Pineapple brings vitamin C and bromelain (a digestive enzyme); cucumber adds hydrating crispness; ginger supports digestion and helps settle the stomach.</p>
